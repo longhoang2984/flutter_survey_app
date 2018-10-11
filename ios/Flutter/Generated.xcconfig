@@ -1,10 +1,10 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/Users/hoangcuulong/Downloads/flutter 2
-FLUTTER_APPLICATION_PATH=/Users/hoangcuulong/Documents/FlutterProject/survey_app
-FLUTTER_TARGET=/Users/hoangcuulong/Documents/FlutterProject/survey_app/lib/main.dart
-FLUTTER_BUILD_MODE=debug
+FLUTTER_APPLICATION_PATH=/Users/hoangcuulong/Documents/GitHub/flutter_survey_app
+FLUTTER_TARGET=/Users/hoangcuulong/Documents/GitHub/flutter_survey_app/lib/main.dart
+FLUTTER_BUILD_MODE=release
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build/ios
-FLUTTER_FRAMEWORK_DIR=/Users/hoangcuulong/Downloads/flutter 2/bin/cache/artifacts/engine/ios
+FLUTTER_FRAMEWORK_DIR=/Users/hoangcuulong/Downloads/flutter 2/bin/cache/artifacts/engine/ios-release
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
