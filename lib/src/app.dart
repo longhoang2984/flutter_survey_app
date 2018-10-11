@@ -54,7 +54,6 @@ class SplashScreenState extends State<SplashScreen>
   Animation<double> thirdTranformAnimation;
   Animation<double> fourTranformAnimation;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -63,83 +62,63 @@ class SplashScreenState extends State<SplashScreen>
     _animateController = AnimationController(
         duration: Duration(milliseconds: 2000), vsync: this);
     _longPressController = AnimationController(
-        duration: Duration(milliseconds: 1000),
-        vsync: this);
+        duration: Duration(milliseconds: 1000), vsync: this);
     _secondStepController = AnimationController(
-        duration: Duration(milliseconds: 1000),
-        vsync: this);
+        duration: Duration(milliseconds: 1000), vsync: this);
     _thirdStepController = AnimationController(
-        duration: Duration(milliseconds: 1000),
-        vsync: this);
+        duration: Duration(milliseconds: 1000), vsync: this);
     _fourStepController = AnimationController(
-        duration: Duration(milliseconds: 1000),
-        vsync: this);
-    longPressAnimation = Tween<double>(
-      begin: 1.0,
-      end: 2.0
-    ).animate(
-      CurvedAnimation(parent: _longPressController, curve: Interval(
-        0.1,
-        1.0,
-        curve: Curves.fastOutSlowIn,
-      ))
-    );
+        duration: Duration(milliseconds: 1000), vsync: this);
+    longPressAnimation =
+        Tween<double>(begin: 1.0, end: 2.0).animate(CurvedAnimation(
+            parent: _longPressController,
+            curve: Interval(
+              0.1,
+              1.0,
+              curve: Curves.fastOutSlowIn,
+            )));
 
-    fourTranformAnimation = Tween<double>(
-        begin: 0.0,
-        end: 1.0
-    ).animate(
-        CurvedAnimation(parent: _fourStepController, curve: Interval(
-          0.1,
-          1.0,
-          curve: Curves.fastOutSlowIn,
-        ))
-    );
+    fourTranformAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: _fourStepController,
+            curve: Interval(
+              0.1,
+              1.0,
+              curve: Curves.fastOutSlowIn,
+            )));
 
-    secondTranformAnimation = Tween<double>(
-        begin: 0.0,
-        end: 1.0
-    ).animate(
-        CurvedAnimation(parent: _secondStepController, curve: Interval(
-          0.1,
-          1.0,
-          curve: Curves.fastOutSlowIn,
-        ))
-    );
+    secondTranformAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: _secondStepController,
+            curve: Interval(
+              0.1,
+              1.0,
+              curve: Curves.fastOutSlowIn,
+            )));
 
-    thirdTranformAnimation = Tween<double>(
-        begin: 0.0,
-        end: 1.0
-    ).animate(
-        CurvedAnimation(parent: _thirdStepController, curve: Interval(
-          0.1,
-          1.0,
-          curve: Curves.fastOutSlowIn,
-        ))
-    );
+    thirdTranformAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: _thirdStepController,
+            curve: Interval(
+              0.1,
+              1.0,
+              curve: Curves.fastOutSlowIn,
+            )));
 
     _longPressController.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
 
     _secondStepController.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
 
     _thirdStepController.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
 
     _fourStepController.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
@@ -189,7 +168,6 @@ class SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     final ui.Size logicalSize = MediaQuery.of(context).size;
     final double _width = logicalSize.width;
-    final double _height = logicalSize.height;
 
     // TODO: implement build
     return Scaffold(
@@ -220,16 +198,16 @@ class SplashScreenState extends State<SplashScreen>
                     curIndex += 1;
                     if (curIndex == 1) {
                       _startSecondStepAnimation();
-                    }else if (curIndex == 2) {
+                    } else if (curIndex == 2) {
                       _startThirdStepAnimation();
-                    }else if (curIndex == 3) {
+                    } else if (curIndex == 3) {
                       _startFourStepAnimation();
                     }
                   });
                 },
                 child: Center(
                     child: Text(
-                  'Continue',
+                  curIndex < 3 ? 'Continue' : 'Finish',
                   style: TextStyle(fontSize: 20.0, color: Colors.orangeAccent),
                 )),
               ),
@@ -266,9 +244,9 @@ class SplashScreenState extends State<SplashScreen>
         ),
         curIndex == 0
             ? _getFirstStep()
-            : curIndex == 1 ? _getSecondStep()
-            : curIndex == 2 ? _getThirdStep()
-            : _getFourStep(),
+            : curIndex == 1
+                ? _getSecondStep()
+                : curIndex == 2 ? _getThirdStep() : _getFourStep(),
       ],
     );
   }
@@ -323,7 +301,8 @@ class SplashScreenState extends State<SplashScreen>
       child: Container(
         margin: EdgeInsets.only(top: 34.0),
         child: Transform(
-          transform: new Matrix4.translationValues(0.0, 50.0 * (1.0 - secondTranformAnimation.value), 0.0),
+          transform: new Matrix4.translationValues(
+              0.0, 50.0 * (1.0 - secondTranformAnimation.value), 0.0),
           child: Opacity(
             opacity: secondTranformAnimation.value,
             child: Column(
@@ -339,8 +318,8 @@ class SplashScreenState extends State<SplashScreen>
                       height: 258.0,
                       child: Card(
                         child: Column(
-                          children:
-                              List.generate(usingCollection.length, (int index) {
+                          children: List.generate(usingCollection.length,
+                              (int index) {
                             final using = usingCollection[index];
                             return GestureDetector(
                               onTapUp: (detail) {
@@ -403,7 +382,8 @@ class SplashScreenState extends State<SplashScreen>
       child: Container(
         margin: EdgeInsets.only(top: 34.0),
         child: Transform(
-          transform: new Matrix4.translationValues(0.0, 50.0 * (1.0 - thirdTranformAnimation.value), 0.0),
+          transform: new Matrix4.translationValues(
+              0.0, 50.0 * (1.0 - thirdTranformAnimation.value), 0.0),
           child: Opacity(
             opacity: thirdTranformAnimation.value,
             child: Column(
@@ -419,15 +399,16 @@ class SplashScreenState extends State<SplashScreen>
                       height: 213.0,
                       child: Card(
                         child: Column(
-                          children:
-                              List.generate(thirdQuestionList.length, (int index) {
+                          children: List.generate(thirdQuestionList.length,
+                              (int index) {
                             ThirdQuestion question = thirdQuestionList[index];
                             return Column(
                               children: <Widget>[
                                 GestureDetector(
                                   onTapUp: (detail) {
                                     setState(() {
-                                      question.isSelected = !question.isSelected;
+                                      question.isSelected =
+                                          !question.isSelected;
 //                                  isFairly = !isFairly;
                                     });
                                   },
@@ -453,7 +434,9 @@ class SplashScreenState extends State<SplashScreen>
                                   ),
                                 ),
                                 Divider(
-                                  height: index < thirdQuestionList.length ? 1.0 : 0.0,
+                                  height: index < thirdQuestionList.length
+                                      ? 1.0
+                                      : 0.0,
                                 ),
                               ],
                             );
@@ -476,7 +459,8 @@ class SplashScreenState extends State<SplashScreen>
       child: Container(
         margin: EdgeInsets.only(top: 34.0),
         child: Transform(
-          transform: new Matrix4.translationValues(0.0, 50.0 * (1.0 - fourTranformAnimation.value), 0.0),
+          transform: new Matrix4.translationValues(
+              0.0, 50.0 * (1.0 - fourTranformAnimation.value), 0.0),
           child: Opacity(
             opacity: fourTranformAnimation.value,
             child: Column(
@@ -485,7 +469,8 @@ class SplashScreenState extends State<SplashScreen>
                 Text('Question 4'),
                 Container(
                     margin: EdgeInsets.only(top: 16.0),
-                    child: Text('When you need help or has concerns related with our product, how satisfied are you with our customer support\'s performance?')),
+                    child: Text(
+                        'When you need help or has concerns related with our product, how satisfied are you with our customer support\'s performance?')),
                 Expanded(
                   child: Center(
                     child: Container(
@@ -513,8 +498,12 @@ class SplashScreenState extends State<SplashScreen>
 //                      },
                                       onTapUp: (detail) {
                                         Navigator.of(context).push(
-                                            MaterialPageRoute(builder: (BuildContext context) => LastPage(statusType: 'Unhappy',))
-                                        );
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        LastPage(
+                                                          statusType: 'Unhappy',
+                                                        )));
                                       },
                                       child: Transform.scale(
                                           scale: longPressAnimation.value,
@@ -525,8 +514,7 @@ class SplashScreenState extends State<SplashScreen>
                                               width: 50.0,
                                               height: 50.0,
                                             ),
-                                          )
-                                      ),
+                                          )),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 8.0),
@@ -534,40 +522,6 @@ class SplashScreenState extends State<SplashScreen>
                                     )
                                   ],
                                 ),
-                      Column(
-                        children: <Widget>[
-                          GestureDetector(
-//                              onTapU
-//                        onLongPress: () {
-//                          _startLongPressAnimation();
-//                          },
-//                                onTapUp: (detail) {
-//                          print(detail);
-//                         _longPressController.reset();
-//                      },
-                            onTapUp: (detail) {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (BuildContext context) => LastPage(statusType: 'Neutral',))
-                              );
-                            },
-                            child: Hero(
-                              tag: 'Neutral',
-                              child: Transform.scale(
-                                  scale: longPressAnimation.value,
-                                  child: Image.asset(
-                                    'images/mmm.gif',
-                                    width: 50.0,
-                                    height: 50.0,
-                                  )
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Text('Neutral'),
-                          )
-                        ],
-                      ),
                                 Column(
                                   children: <Widget>[
                                     GestureDetector(
@@ -581,8 +535,50 @@ class SplashScreenState extends State<SplashScreen>
 //                      },
                                       onTapUp: (detail) {
                                         Navigator.of(context).push(
-                                            MaterialPageRoute(builder: (BuildContext context) => LastPage(statusType: 'Satisfied',))
-                                        );
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        LastPage(
+                                                          statusType: 'Neutral',
+                                                        )));
+                                      },
+                                      child: Hero(
+                                        tag: 'Neutral',
+                                        child: Transform.scale(
+                                            scale: longPressAnimation.value,
+                                            child: Image.asset(
+                                              'images/mmm.gif',
+                                              width: 50.0,
+                                              height: 50.0,
+                                            )),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text('Neutral'),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: <Widget>[
+                                    GestureDetector(
+//                              onTapU
+//                        onLongPress: () {
+//                          _startLongPressAnimation();
+//                          },
+//                                onTapUp: (detail) {
+//                          print(detail);
+//                         _longPressController.reset();
+//                      },
+                                      onTapUp: (detail) {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        LastPage(
+                                                          statusType:
+                                                              'Satisfied',
+                                                        )));
                                       },
                                       child: Transform.scale(
                                           scale: longPressAnimation.value,
@@ -593,8 +589,7 @@ class SplashScreenState extends State<SplashScreen>
                                               width: 50.0,
                                               height: 50.0,
                                             ),
-                                          )
-                                      ),
+                                          )),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 8.0),
@@ -834,6 +829,12 @@ class AnimationBox extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
+                  Expanded(
+                      child: Center(
+                          child: FlutterLogo(
+                            colors: Colors.orange,
+                    size: 100.0,
+                  ))),
                   Text(
                     'Your opinion in 3 minutes.',
                     style: TextStyle(
@@ -883,7 +884,6 @@ class AnimationBox extends StatelessWidget {
                 ),
               ),
             ),
-
 //            Opacity(
 //              opacity: 1.0 - opacity.value,
 //              child:
