@@ -1,8 +1,6 @@
-# survey_app
+# Flutter Survey App Concept
 
-A new Flutter application.
+A new Flutter Survey application.
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+# Video:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ABQ2W-bTphA/0.jpg)](https://www.youtube.com/watch?v=ABQ2W-bTphA)
