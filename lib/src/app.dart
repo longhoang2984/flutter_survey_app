@@ -246,7 +246,9 @@ class SplashScreenState extends State<SplashScreen>
             ? _getFirstStep()
             : curIndex == 1
                 ? _getSecondStep()
-                : curIndex == 2 ? _getThirdStep() : _getFourStep(),
+                : curIndex == 2
+                    ? _getThirdStep()
+                    : _getFourStep(),
       ],
     );
   }
@@ -276,6 +278,8 @@ class SplashScreenState extends State<SplashScreen>
             Expanded(
               child: Center(
                 child: Slider(
+                  activeColor: Colors.orangeAccent,
+                  inactiveColor: Colors.orangeAccent,
                   value: overall,
                   onChanged: (value) {
                     setState(() {
@@ -778,7 +782,7 @@ class AnimationBox extends StatelessWidget {
                       children: List.generate(numberOfStep.value, (int index) {
                         return Container(
                           decoration: BoxDecoration(
-//                    color: Colors.orangeAccent,
+                            //  color: Colors.orangeAccent,
                             color:
                                 index == 0 ? Colors.orangeAccent : Colors.grey,
                             borderRadius:
@@ -830,11 +834,34 @@ class AnimationBox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Expanded(
-                      child: Center(
-                          child: FlutterLogo(
-                            colors: Colors.orange,
-                    size: 100.0,
-                  ))),
+                    child: Center(
+                      child: StylizedFlutterLogo(
+                        colorFilter: ColorFilter.matrix(<double>[
+                          1,
+                          0,
+                          0,
+                          0,
+                          255,
+                          0.9,
+                          -1,
+                          0.4,
+                          0,
+                          171,
+                          0,
+                          0,
+                          -1,
+                          0,
+                          64,
+                          0,
+                          0,
+                          0,
+                          1,
+                          0,
+                        ]),
+                        size: 100,
+                      ),
+                    ),
+                  ),
                   Text(
                     'Your opinion in 3 minutes.',
                     style: TextStyle(
@@ -907,4 +934,19 @@ class ThirdQuestion {
   bool isSelected;
 
   ThirdQuestion(this.displayContent, this.isSelected);
+}
+
+class StylizedFlutterLogo extends StatelessWidget {
+  final ColorFilter colorFilter;
+  final double size;
+
+  const StylizedFlutterLogo({this.colorFilter, this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    return ColorFiltered(
+      colorFilter: colorFilter,
+      child: FlutterLogo(size: size),
+    );
+  }
 }
